@@ -14,18 +14,26 @@ export default class Main extends Component {
     addClass: false
   };
 
-  // addCount = () => {
-  //   this.setState({
-  //     num: this.state.num + 1
-  //   });
-  // };
-
+  delListItem = (index) => {
+    const elem = [...this.state.list];
+    elem.splice(index, 1);
+    this.setState({
+      list: elem
+    });
+  };
   render() {
     return (
       <div className="main">
+        {this.props.number}
         <AddList />
-        {this.state.list.map((listItem) => {
-          return <ListItem {...listItem} />;
+        {this.state.list.map((listItem, index) => {
+          return (
+            <ListItem
+              {...listItem}
+              delListItem={() => this.delListItem(index)}
+              key={index}
+            />
+          );
         })}
       </div>
     );

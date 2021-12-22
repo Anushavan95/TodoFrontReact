@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AddList() {
+export default function AddList(props) {
   return (
     <div>
       <input placeholder="AddList" />

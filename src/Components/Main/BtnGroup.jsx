@@ -1,10 +1,11 @@
 import React from "react";
 
-export default function BtnGroup() {
+export default function BtnGroup(props) {
+  const { handleImportantClick, delListItem } = props;
   return (
     <div>
-      <button>Delete</button>
-      <button>Important</button>
+      <button onClick={delListItem}>Delete</button>
+      <button onClick={handleImportantClick}>Important</button>
     </div>
   );
 }
