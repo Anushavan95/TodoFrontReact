@@ -3,6 +3,7 @@ import AddList from "./AddList";
 import ListItem from "./ListItem";
 
 export default class Main extends Component {
+  id = 3;
   state = {
     num: 1,
     list: [
@@ -21,11 +22,30 @@ export default class Main extends Component {
       list: elem
     });
   };
+
+  addTodoListItem = (InputValue) => {
+    let lisItem = {
+      name: InputValue,
+      important: false,
+      id: this.id++
+    };
+    console.log(lisItem, "lisItem");
+    // this.setState({
+    //   list: newListItem
+    // });
+
+    this.setState(({ list }) => {
+      const newListItem = [...list, lisItem];
+      return {
+        list: newListItem
+      };
+    });
+  };
   render() {
     return (
       <div className="main">
         {this.props.number}
-        <AddList />
+        <AddList addTodoListItem={this.addTodoListItem} />
         {this.state.list.map((listItem, index) => {
           return (
             <ListItem
